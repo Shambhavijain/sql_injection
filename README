@@ -110,19 +110,18 @@ The app demonstrates how improper coding practices can lead to:
 
 ✅ Privilege escalation and denial of service
 
-✅ How to Fix (Secure Coding Practices)
-To secure the application:
 
-Use parameterized queries, e.g.:
+✅To secure the application:
+1.Use parameterized queries, e.g.:
 cursor.execute("SELECT * FROM votes WHERE candidate_id = ?", (candidate_id,))
 
-Avoid executescript() with user input.
+2.Avoid executescript() with user input.
 
-Validate and sanitize all inputs on both frontend and backend.
+3.Validate and sanitize all inputs on both frontend and backend.
 
-Implement error handling to prevent exposing stack traces.
+4.Implement error handling to prevent exposing stack traces.
 
-Add input length limits, regex validation, and strict types.
+5.Add input length limits, regex validation, and strict types.
 
 🔮 Future Improvements
 🔐 Implement secure user authentication and session management with hashed passwords (e.g., using bcrypt).

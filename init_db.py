@@ -23,7 +23,7 @@ def init_database():
         );
     """)
 
-    # Optional: Insert some initial candidates
+    #  Insert some initial candidates
     cursor.execute("INSERT OR IGNORE INTO candidates (id, name) VALUES (1, 'Alice');")
     cursor.execute("INSERT OR IGNORE INTO candidates (id, name) VALUES (2, 'Bob');")
     cursor.execute("INSERT OR IGNORE INTO candidates (id, name) VALUES (3, 'Charlie');")

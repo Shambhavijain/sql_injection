@@ -1,9 +1,12 @@
 Vulnerable Voting App — SQL Injection Demonstration
 ❗Purpose
-This project demonstrates how a voting application built with Python (Flask) can be vulnerable to SQL Injection attacks when user inputs are not properly sanitized.
+This project demonstrates how a simple voting application built with
+Python (Flask) can be vulnerable to SQL Injection attacks when user inputs are not properly sanitized or validated.
+The goal is to raise awareness about common web security flaws and emphasize the importance of input validation .
 
-
-
+👤 Created By: Shambhavi Jain
+This is the first project under WatchGuard, a company I founded to explore and showcase cybersecurity vulnerabilities in web applications.
+ This demonstration project highlights the real-world risks of insecure coding practices by simulating a vulnerable voting system.
 
 🖼️ Architecture Overview
 Below is the vulnerable architecture of the application:
@@ -12,16 +15,25 @@ Vote form input goes directly into unsafe SQL queries.
 
 Attackers can manipulate the query, alter data, or bypass authentication.
 
+
+
+🧰 Technologies Used
+Technology	   Purpose
+Python 3.x	   Core programming language
+Flask	       Web framework used to build the app
+SQLite3    	   Lightweight relational database
+HTML           Templating engine for rendering pages
+
 📁 Project Structure
 vulnerable_voting_app/
 │
-├── app.py             # Main Flask application (vulnerable)
-├── init_db.py         # Script to initialize the SQLite database
+├── app.py            
+├── init_db.py        
 ├── templates/
-│   └── vote.html      # Voting form HTML template
+│   └── vote.html      
     └──results.html
-├── vulnerable_voting_app.jpg  # Image showing insecure flow
-└── README.md          # This file
+├── vulnerable_voting_app.jpg  
+└── README.md          
 
 
 ⚙️ Setup Instructions
@@ -69,11 +81,15 @@ On a login or result page (if implemented), try this as username or query parame
 🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
 
-No parameterized queries or input validation.
+No use of parameterized queries.
 
-Direct execution of user input in SQL.
+Lack of input sanitization and validation.
 
-✅ How to Fix:
+Direct execution of raw user input.
+
+
+
+✅ How to Fix(Prevention):
 While this project shows how things can go wrong, here are best practices for securing it:
 
 Use parameterized queries (e.g., cursor.execute("SELECT * FROM ... WHERE id = ?", (id,)))

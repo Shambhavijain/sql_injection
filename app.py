@@ -23,14 +23,14 @@ def vote():
         conn = get_db_connection()
         cur = conn.cursor()
 
-        # 🚩 Vulnerable: direct string formatting - NOW A SINGLE LINE
-        query = f"INSERT INTO votes(user_id, candidate_id, vote_count) VALUES ('{u}', '{c}', 1);" # <-- This is the change!
+        #  Vulnerable: direct string formatting - NOW A SINGLE LINE
+        query = f"INSERT INTO votes(user_id, candidate_id, vote_count) VALUES ('{u}', '{c}', 1);" 
 
         try:
-            # ⭐⭐⭐ TEMPORARY CHANGE FOR DEMO ONLY ⭐⭐⭐
+           
             # This line makes stacked queries possible for demonstration
             cur.executescript(query)
-            # ⭐⭐⭐ END TEMPORARY CHANGE ⭐⭐⭐
+            #  END TEMPORARY CHANGE 
 
             conn.commit()
             message = f"Vote for candidate {c} recorded successfully for user {u}!"
@@ -51,10 +51,9 @@ def results():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # ⭐ UPDATE THIS LINE ⭐
+    
     # This new query will normally return nothing unless the injected 's' makes it true.
-    # It ensures normal searches yield no results.
-    # IMPORTANT: There is NO semicolon at the end of this f-string.
+
     q = f"SELECT user_id, candidate_id, vote_count FROM votes WHERE user_id = 'NON_EXISTENT_ID_FOR_FILTER' AND user_id = '{s}'"
     
     results = []

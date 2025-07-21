@@ -49,10 +49,6 @@ vulnerable_voting_app/
 ├── vulnerable_voting_app.jpg # Architecture diagram (if any)
 └── README.md # Project documentation
 
-yaml
-Copy
-Edit
-
 ---
 
 ## ⚙️ Setup Instructions
@@ -76,7 +72,7 @@ python app.py
 Open your browser and visit:
 http://127.0.0.1:5000
 
-##🧪 SQL Injection Demonstration
+## 🧪 SQL Injection Demonstration
 🗳️ Vote Form Injection
 Try submitting this as input for the Candidate ID field in the vote form:
 1', 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
@@ -88,7 +84,7 @@ If the result page accepts a search field (user_id) or if login is implemented i
 ' OR '1'='1
 ✅ This uses a classic always-true logic to bypass filters or login forms.
 
-##🧱 What's Vulnerable?
+## 🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
 
 No use of parameterized queries.
@@ -99,7 +95,7 @@ Use of executescript() that allows stacked SQL queries.
 
 No use of secure authentication mechanisms (in insecure login scenarios).
 
-##🔒 Security Risks Explained
+## 🔒 Security Risks Explained
 The app demonstrates how improper coding practices can lead to:
 
 ✅ Data tampering (e.g., modifying vote counts)

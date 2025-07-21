@@ -51,7 +51,7 @@ This is a deliberately insecure system that:
 │
 └── README.md                # Project documentation
 
----
+```
 
 ## ⚙️ Setup Instructions
 
@@ -78,19 +78,22 @@ Open your browser and visit:
 
 
 http://127.0.0.1:5000
+```
+---
 
-SQL Injection Demonstration
+## SQL Injection Demonstration
 📝 Vote Form Injection
 Try submitting this as input for the Candidate ID field in the vote form:
 
+1',1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '2'; --
 
-1'), 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
 🔐 Result Bypass Injection
-Try submitting this input to bypass login:
 
+'OR '1'='1
 
-' OR '1'='1
-🧱 What's Vulnerable?
+---
+
+## 🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
 
 No use of parameterized queries.
@@ -101,14 +104,20 @@ Use of executescript() that allows stacked SQL queries.
 
 No use of secure authentication mechanisms (in insecure login scenarios).
 
-🔒 Security Risks Explained
+---
+
+## 🔒 Security Risks Explained
 The app demonstrates how improper coding practices can lead to:
 
 ✅ Data tampering (e.g., modifying vote counts)
+
 ✅ Data leakage (e.g., exposing votes, users)
+
 ✅ Authentication bypass (e.g., logging in with ' OR '1'='1)
 
-🔮 Future Improvements
+---
+
+## 🔮 Future Improvements
 🔐 Implement secure user authentication and session management with hashed passwords (e.g., using bcrypt).
 
 👥 Add role-based access control (RBAC) to restrict admin operations.

@@ -35,9 +35,12 @@ This is a deliberately insecure system that:
 | SQLite3    | Lightweight relational database        |
 | HTML       | Used for building the frontend (forms) |
 
+```markdown
 ---
 
 📁 Project Structure
+
+```plaintext
 │
 ├── vulnerable_voting_app/
 │   ├── app.py               # Main Flask application with vulnerabilities
@@ -48,8 +51,6 @@ This is a deliberately insecure system that:
 │   └── vulnerable_voting_app.jpg  # Architecture diagram (if any)
 │
 └── README.md                # Project documentation
-
----
 
 ## ⚙️ Setup Instructions
 

@@ -1,97 +1,132 @@
-<h2>Vulnerable Voting App — SQL Injection Demonstration</h2>
-<h4>❗Purpose</h4>
-<p>This project demonstrates how a simple voting application built with
-Python (Flask) can be vulnerable to SQL Injection attacks when user inputs are not properly sanitized or validated.
-The goal is to raise awareness about common web security flaws and emphasize the importance of input validation .</p>
+# Vulnerable Voting App — SQL Injection Demonstration
 
-<h4>👤 Created By: Shambhavi Jain<h4>
-This is the first project under WatchGuard, a company I founded to explore and showcase cybersecurity vulnerabilities in web applications.
- This demonstration project highlights the real-world risks of insecure coding practices by simulating a vulnerable voting system.
+## ❗ Purpose
 
-<h4>🖼️ Architecture Overview<h4>
+This project demonstrates how a simple voting application built with Python (Flask) can be vulnerable to **SQL Injection attacks** when user inputs are not properly sanitized or validated.  
+The goal is to raise awareness about common web security flaws and emphasize the importance of **input validation** and **safe coding practices**.
 
-Below is the vulnerable architecture of the application:
-<ul>
-<li>Vote form input goes directly into unsafe SQL queries.</li>
+---
 
-<li>Attackers can manipulate the query, alter data, or bypass authentication.</li>
-</ul>
-<br>
-<h4>🧰 Technologies Used<h4>
-Technology	   Purpose
-Python 3.x	   Core programming language
-Flask	       Web framework used to build the app
-SQLite3    	   Lightweight relational database
-HTML           Templating engine for rendering pages
+## 👤 Created By
 
-<h4>📁 Project Structure<h4>
+**Shambhavi Jain**
+
+This is the first project under **WatchGuard**, a company I founded to explore and showcase cybersecurity vulnerabilities in web applications.  
+This demonstration project highlights the real-world risks of insecure coding practices by simulating a vulnerable voting system.
+
+---
+
+## 🖼️ Architecture Overview
+
+This is a deliberately insecure system that:
+
+- Accepts vote form input and places it directly into unsafe SQL queries.
+- Allows attackers to manipulate queries, alter database records, and even bypass authentication (if login is implemented insecurely).
+- Lacks proper validation and uses raw string-based SQL queries.
+
+---
+
+## 🧰 Technologies Used
+
+| Technology | Purpose                                |
+|------------|----------------------------------------|
+| Python 3.x | Core programming language              |
+| Flask      | Web framework used to build the app    |
+| SQLite3    | Lightweight relational database        |
+| HTML       | Used for building the frontend (forms) |
+
+---
+
+## 📁 Project Structure
+
 vulnerable_voting_app/
 │
-├── app.py            
-├── init_db.py        
-├── templates/
-│   └── vote.html      
-    └──results.html
-├── vulnerable_voting_app.jpg  
-└── README.md          
+├── app.py # Main Flask application with vulnerabilities
+├── init_db.py # Initializes database with tables and sample data
+├── templates/ # HTML templates
+│ ├── vote.html
+│ └── results.html
+├── vulnerable_voting_app.jpg # Architecture diagram (if any)
+└── README.md # Project documentation
 
+yaml
+Copy
+Edit
 
-<h4>⚙️ Setup Instructions<h4>
-Requirements: Python 3.x
+---
 
-1.Clone or download the repo:
+## ⚙️ Setup Instructions
+
+> **Requirements**: Python 3.x
+
+1. Clone the repository:
+
+```bash
 git clone https://github.com/yourusername/voting-app.git
 cd voting-app
-
-
-2.Install Flask if not already installed:
-
+Install Flask if not already installed:
 pip install flask
 
-
-3.Initialize the database:
-
+Initialize the database:
 python init_db.py
 
-
-4.Start the app:
-
+Run the application:
 python app.py
-Open your browser and go to:
 
+Open your browser and visit:
 http://127.0.0.1:5000
 
-🧪 SQL Injection Demo
-Try submitting this as input in the voting form:
-
-Candidate_id:
+##🧪 SQL Injection Demonstration
+🗳️ Vote Form Injection
+Try submitting this as input for the Candidate ID field in the vote form:
 1', 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
-
 ✅ This injects a malicious SQL command that sets the vote count to 999 for candidate ID 1.
 
-
-Try submitting this as input in the result page:
-
-🔓 Authentication Bypass Example
-On a login or result page (if implemented), try this as username or query parameter:
+🔓 Result Page Injection / Authentication Bypass
+If the result page accepts a search field (user_id) or if login is implemented insecurely, try:
 
 ' OR '1'='1
-✅ This bypasses basic authentication or filters using always-true logic.
+✅ This uses a classic always-true logic to bypass filters or login forms.
 
-🧱 What's Vulnerable?
+##🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
 
 No use of parameterized queries.
 
 Lack of input sanitization and validation.
 
-Direct execution of raw user input.
+Use of executescript() that allows stacked SQL queries.
 
+No use of secure authentication mechanisms (in insecure login scenarios).
 
+##🔒 Security Risks Explained
+The app demonstrates how improper coding practices can lead to:
 
-✅ How to Fix(Prevention):
-While this project shows how things can go wrong, here are best practices for securing it:
+✅ Data tampering (e.g., modifying vote counts)
 
-Use parameterized queries (e.g., cursor.execute("SELECT * FROM ... WHERE id = ?", (id,)))
+✅ Data leakage (e.g., exposing votes, users)
 
-Sanitize and validate all user inputs
+✅ Authentication bypass (e.g., logging in with ' OR '1'='1)
+
+✅ Privilege escalation and denial of service
+
+✅ How to Fix (Secure Coding Practices)
+To secure the application:
+
+Use parameterized queries, e.g.:
+cursor.execute("SELECT * FROM votes WHERE candidate_id = ?", (candidate_id,))
+
+Avoid executescript() with user input.
+
+Validate and sanitize all inputs on both frontend and backend.
+
+Implement error handling to prevent exposing stack traces.
+
+Add input length limits, regex validation, and strict types.
+
+🔮 Future Improvements
+🔐 Implement secure user authentication and session management with hashed passwords (e.g., using bcrypt).
+
+👥 Add role-based access control (RBAC) to restrict admin operations.
+
+🧼 Use security libraries to sanitize inputs.

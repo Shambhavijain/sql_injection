@@ -37,17 +37,17 @@ This is a deliberately insecure system that:
 
 ---
 
-## 📁 Project Structure
-
-vulnerable_voting_app/
+📁 Project Structure
 │
-├── app.py # Main Flask application with vulnerabilities
-├── init_db.py # Initializes database with tables and sample data
-├── templates/ # HTML templates
-│ ├── vote.html
-│ └── results.html
-├── vulnerable_voting_app.jpg # Architecture diagram (if any)
-└── README.md # Project documentation
+├── vulnerable_voting_app/
+│   ├── app.py               # Main Flask application with vulnerabilities
+│   ├── init_db.py           # Initializes database with tables and sample data
+│   ├── templates/           # HTML templates
+│   │   ├── vote.html
+│   │   └── results.html
+│   └── vulnerable_voting_app.jpg  # Architecture diagram (if any)
+│
+└── README.md                # Project documentation
 
 ---
 
@@ -72,6 +72,8 @@ python app.py
 Open your browser and visit:
 http://127.0.0.1:5000
 
+---
+
 ## 🧪 SQL Injection Demonstration
 🗳️ Vote Form Injection
 Try submitting this as input for the Candidate ID field in the vote form:
@@ -84,6 +86,8 @@ If the result page accepts a search field (user_id) or if login is implemented i
 ' OR '1'='1
 ✅ This uses a classic always-true logic to bypass filters or login forms.
 
+---
+
 ## 🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
 
@@ -95,6 +99,8 @@ Use of executescript() that allows stacked SQL queries.
 
 No use of secure authentication mechanisms (in insecure login scenarios).
 
+---
+
 ## 🔒 Security Risks Explained
 The app demonstrates how improper coding practices can lead to:
 
@@ -104,20 +110,7 @@ The app demonstrates how improper coding practices can lead to:
 
 ✅ Authentication bypass (e.g., logging in with ' OR '1'='1)
 
-✅ Privilege escalation and denial of service
-
-
-✅To secure the application:
-1.Use parameterized queries, e.g.:
-cursor.execute("SELECT * FROM votes WHERE candidate_id = ?", (candidate_id,))
-
-2.Avoid executescript() with user input.
-
-3.Validate and sanitize all inputs on both frontend and backend.
-
-4.Implement error handling to prevent exposing stack traces.
-
-5.Add input length limits, regex validation, and strict types.
+---
 
 🔮 Future Improvements
 🔐 Implement secure user authentication and session management with hashed passwords (e.g., using bcrypt).

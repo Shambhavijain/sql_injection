@@ -53,12 +53,13 @@ This is a deliberately insecure system that:
 
 ---
 
-⚙️ Setup Instructions
-Requirements: Python 3.x
+## ⚙️ Setup Instructions
 
-Clone the repository:
+> **Requirements**: Python 3.x
 
+1. Clone the repository:
 
+```bash
 git clone https://github.com/yourusername/voting-app.git
 cd voting-app
 Install Flask if not already installed:
@@ -66,6 +67,7 @@ Install Flask if not already installed:
 
 pip install flask
 Initialize the database:
+
 
 python init_db.py
 Run the application:
@@ -76,8 +78,6 @@ Open your browser and visit:
 
 
 http://127.0.0.1:5000
-
----
 
 SQL Injection Demonstration
 📝 Vote Form Injection

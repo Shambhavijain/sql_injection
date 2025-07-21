@@ -72,6 +72,8 @@ python app.py
 Open your browser and visit:
 http://127.0.0.1:5000
 
+---
+
 SQL Injection Demonstration
 📝 Vote Form Injection
 Try submitting this as input for the Candidate ID field in the vote form:
@@ -79,6 +81,11 @@ Try submitting this as input for the Candidate ID field in the vote form:
 
 1'), 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
 
+🔐 Login Bypass Injection
+
+' OR '1'='1
+
+---
 
 🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
@@ -90,6 +97,8 @@ Lack of input sanitization and validation.
 Use of executescript() that allows stacked SQL queries.
 
 No use of secure authentication mechanisms (in insecure login scenarios).
+
+---
 
 🔒 Security Risks Explained
 The app demonstrates how improper coding practices can lead to:

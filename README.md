@@ -35,7 +35,6 @@ This is a deliberately insecure system that:
 | SQLite3    | Lightweight relational database        |
 | HTML       | Used for building the frontend (forms) |
 
-```markdown
 ---
 
 📁 Project Structure
@@ -51,46 +50,40 @@ This is a deliberately insecure system that:
 │   └── vulnerable_voting_app.jpg  # Architecture diagram (if any)
 │
 └── README.md                # Project documentation
+⚙️ Setup Instructions
+Requirements: Python 3.x
 
-## ⚙️ Setup Instructions
+Clone the repository:
 
-> **Requirements**: Python 3.x
 
-1. Clone the repository:
-
-```bash
 git clone https://github.com/yourusername/voting-app.git
 cd voting-app
 Install Flask if not already installed:
+
+
 pip install flask
-
 Initialize the database:
+
 python init_db.py
-
 Run the application:
+
+
 python app.py
-
 Open your browser and visit:
+
+
 http://127.0.0.1:5000
-
----
-
-## SQL Injection Demonstration
-
-### 📝 Vote Form Injection
-
+SQL Injection Demonstration
+📝 Vote Form Injection
 Try submitting this as input for the Candidate ID field in the vote form:
 
+
 1'), 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
+🔐 Result Bypass Injection
+Try submitting this input to bypass login:
 
-
-### 🔐 Result Bypass Injection
 
 ' OR '1'='1
-
----
-
-
 🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
 
@@ -102,28 +95,12 @@ Use of executescript() that allows stacked SQL queries.
 
 No use of secure authentication mechanisms (in insecure login scenarios).
 
----
-
 🔒 Security Risks Explained
 The app demonstrates how improper coding practices can lead to:
 
 ✅ Data tampering (e.g., modifying vote counts)
 ✅ Data leakage (e.g., exposing votes, users)
 ✅ Authentication bypass (e.g., logging in with ' OR '1'='1)
-
-🔮 Future Improvements
-🔐 Implement secure user authentication and session management with hashed passwords (e.g., using bcrypt).
-
-👥 Add role-based access control (RBAC) to restrict admin operations.
-
-🧼 Use security libraries to sanitize inputs.
-✅ Data tampering (e.g., modifying vote counts)
-
-✅ Data leakage (e.g., exposing votes, users)
-
-✅ Authentication bypass (e.g., logging in with ' OR '1'='1)
-
----
 
 🔮 Future Improvements
 🔐 Implement secure user authentication and session management with hashed passwords (e.g., using bcrypt).

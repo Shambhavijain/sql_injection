@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Results</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        form { margin-bottom: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        input[type="text"] { padding: 8px; margin-right: 10px; border: 1px solid #ddd; border-radius: 3px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Voting Results</h1>
+
+    <form method="GET" action="/results">
+        <label for="search">Search by User/Candidate ID:</label>
+        <input type="text" name="search" id="search" placeholder="e.g., user1 or 2">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Candidate ID</th>
+                    <th>Vote Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        <td>{{ row.user_id }}</td>
+                        <td>{{ row.candidate_id }}</td>
+                        <td>{{ row.vote_count }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No results found or search query not provided.</p>
+    {% endif %}
+
+    <p><a href="/vote">Go back to Vote</a></p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+Vulnerable Voting App — SQL Injection Demonstration
+❗Purpose
+This project demonstrates how a voting application built with Python (Flask) can be vulnerable to SQL Injection attacks when user inputs are not properly sanitized.
+
+
+
+
+🖼️ Architecture Overview
+Below is the vulnerable architecture of the application:
+
+Vote form input goes directly into unsafe SQL queries.
+
+Attackers can manipulate the query, alter data, or bypass authentication.
+
+📁 Project Structure
+vulnerable_voting_app/
+│
+├── app.py             # Main Flask application (vulnerable)
+├── init_db.py         # Script to initialize the SQLite database
+├── templates/
+│   └── vote.html      # Voting form HTML template
+    └──results.html
+├── vulnerable_voting_app.jpg  # Image showing insecure flow
+└── README.md          # This file
+
+
+⚙️ Setup Instructions
+Requirements: Python 3.x
+
+1.Clone or download the repo:
+git clone https://github.com/yourusername/voting-app.git
+cd voting-app
+
+
+2.Install Flask if not already installed:
+
+pip install flask
+
+
+3.Initialize the database:
+
+python init_db.py
+
+
+4.Start the app:
+
+python app.py
+Open your browser and go to:
+
+http://127.0.0.1:5000
+
+🧪 SQL Injection Demo
+Try submitting this as input in the voting form:
+
+Candidate_id:
+1', 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
+
+✅ This injects a malicious SQL command that sets the vote count to 999 for candidate ID 1.
+
+
+Try submitting this as input in the result page:
+
+🔓 Authentication Bypass Example
+On a login or result page (if implemented), try this as username or query parameter:
+
+' OR '1'='1
+✅ This bypasses basic authentication or filters using always-true logic.
+
+🧱 What's Vulnerable?
+SQL queries built using string concatenation or f-strings.
+
+No parameterized queries or input validation.
+
+Direct execution of user input in SQL.
+
+✅ How to Fix:
+While this project shows how things can go wrong, here are best practices for securing it:
+
+Use parameterized queries (e.g., cursor.execute("SELECT * FROM ... WHERE id = ?", (id,)))
+
+Sanitize and validate all user inputs

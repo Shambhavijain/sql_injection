@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Now!</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        form { margin-bottom: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        input[type="text"] { padding: 8px; margin-right: 10px; border: 1px solid #ddd; border-radius: 3px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .message { margin-top: 15px; padding: 10px; border-radius: 4px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>Cast Your Vote</h1>
+
+    {% if message %}
+        <div class="message {{ 'success' if 'successfully' in message else 'error' }}">
+            <p>{{ message }}</p>
+        </div>
+    {% endif %}
+
+    <form method="POST" action="/vote">
+        <label for="user_id">User ID:</label>
+        <input type="text" name="user_id" id="user_id" placeholder="Your User ID (e.g., user123)" required>
+        <label for="candidate_id">Candidate ID:</label>
+        <input type="text" name="candidate_id" id="candidate_id" placeholder="Candidate ID (1, 2, or 3)" required>
+        <button type="submit">Vote</button>
+    </form>
+
+    <p><a href="/results">View Results</a></p>
+</body>
+</html>

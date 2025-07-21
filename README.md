@@ -56,26 +56,26 @@ This is a deliberately insecure system that:
 ## ⚙️ Setup Instructions
 
 > **Requirements**: Python 3.x
-
+```
 1. Clone the repository:
 
-```bash
 git clone https://github.com/yourusername/voting-app.git
-cd voting-app
-Install Flask if not already installed:
 
+2.cd voting-app
+
+3.Install Flask if not already installed:
 
 pip install flask
-Initialize the database:
 
+4.Initialize the database:
 
 python init_db.py
-Run the application:
 
+5.Run the application:
 
 python app.py
-Open your browser and visit:
 
+6.Open your browser and visit:
 
 http://127.0.0.1:5000
 ```

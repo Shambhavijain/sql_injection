@@ -50,6 +50,9 @@ This is a deliberately insecure system that:
 │   └── vulnerable_voting_app.jpg  # Architecture diagram (if any)
 │
 └── README.md                # Project documentation
+
+---
+
 ⚙️ Setup Instructions
 Requirements: Python 3.x
 
@@ -73,6 +76,9 @@ Open your browser and visit:
 
 
 http://127.0.0.1:5000
+
+---
+
 SQL Injection Demonstration
 📝 Vote Form Injection
 Try submitting this as input for the Candidate ID field in the vote form:

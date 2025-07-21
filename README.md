@@ -74,19 +74,15 @@ http://127.0.0.1:5000
 
 ---
 
-## 🧪 SQL Injection Demonstration
-🗳️ Vote Form Injection
+## SQL Injection Demonstration
+
+### 📝 Vote Form Injection
+
 Try submitting this as input for the Candidate ID field in the vote form:
-1', 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
-✅ This injects a malicious SQL command that sets the vote count to 999 for candidate ID 1.
 
-🔓 Result Page Injection / Authentication Bypass
-If the result page accepts a search field (user_id) or if login is implemented insecurely, try:
+```sql
+1'), 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
 
-' OR '1'='1
-✅ This uses a classic always-true logic to bypass filters or login forms.
-
----
 
 ## 🧱 What's Vulnerable?
 SQL queries built using string concatenation or f-strings.

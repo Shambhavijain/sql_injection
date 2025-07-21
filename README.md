@@ -80,7 +80,6 @@ http://127.0.0.1:5000
 
 Try submitting this as input for the Candidate ID field in the vote form:
 
-```sql
 1'), 1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '1'; --
 
 ---

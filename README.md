@@ -89,7 +89,7 @@ Try submitting this as input for the Candidate ID field in the vote form:
 
 2.  Result Bypass Injection
 
-   'OR '1'='1
+      'OR '1'='1
 
 ---
 

@@ -44,12 +44,12 @@ This is a deliberately insecure system that:
 ├── vulnerable_voting_app/
 │   ├── app.py               # Main Flask application with vulnerabilities
 │   ├── init_db.py           # Initializes database with tables and sample data
-│   ├── templates/           # HTML templates
+│   ├── templates/          
 │   │   ├── vote.html
 │   │   └── results.html
-│   └── vulnerable_voting_app.jpg  # Architecture diagram (if any)
+│   └── vulnerable_voting_app.jpg  
 │
-└── README.md                # Project documentation
+└── README.md                
 
 ```
 

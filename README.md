@@ -1,13 +1,13 @@
 # Vulnerable Voting App — SQL Injection Demonstration
 
-## ❗ Purpose
+##  Purpose
 
 This project demonstrates how a simple voting application built with Python (Flask) can be vulnerable to **SQL Injection attacks** when user inputs are not properly sanitized or validated.  
 The goal is to raise awareness about common web security flaws and emphasize the importance of **input validation** and **safe coding practices**.
 
 ---
 
-## 👤 Created By
+##  Created By
 
 **Shambhavi Jain**
 
@@ -16,7 +16,7 @@ This demonstration project highlights the real-world risks of insecure coding pr
 
 ---
 
-## 🖼️ Architecture Overview
+##  Architecture Overview
 
 This is a deliberately insecure system that:
 
@@ -26,7 +26,7 @@ This is a deliberately insecure system that:
 
 ---
 
-## 🧰 Technologies Used
+##  Technologies Used
 
 | Technology | Purpose                                |
 |------------|----------------------------------------|
@@ -37,7 +37,7 @@ This is a deliberately insecure system that:
 
 ---
 
-📁 Project Structure
+ Project Structure
 
 ```plaintext
 │
@@ -53,7 +53,7 @@ This is a deliberately insecure system that:
 
 ```
 
-## ⚙️ Setup Instructions
+##  Setup Instructions
 
 > **Requirements**: Python 3.x
 ```
@@ -82,18 +82,18 @@ http://127.0.0.1:5000
 ---
 
 ## SQL Injection Demonstration
-📝 Vote Form Injection
+1. Vote Form Injection
 Try submitting this as input for the Candidate ID field in the vote form:
 
-1',1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '2'; --
+   1',1); UPDATE votes SET vote_count = 999 WHERE candidate_id = '2'; --
 
-🔐 Result Bypass Injection
+2.  Result Bypass Injection
 
-'OR '1'='1
+   'OR '1'='1
 
 ---
 
-## 🧱 What's Vulnerable?
+##  What's Vulnerable?
 SQL queries built using string concatenation or f-strings.
 
 No use of parameterized queries.
@@ -106,7 +106,7 @@ No use of secure authentication mechanisms (in insecure login scenarios).
 
 ---
 
-## 🔒 Security Risks Explained
+##  Security Risks Explained
 The app demonstrates how improper coding practices can lead to:
 
 ✅ Data tampering (e.g., modifying vote counts)
@@ -117,9 +117,7 @@ The app demonstrates how improper coding practices can lead to:
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 🔐 Implement secure user authentication and session management with hashed passwords (e.g., using bcrypt).
-
-👥 Add role-based access control (RBAC) to restrict admin operations.
 
 🧼 Use security libraries to sanitize inputs.
